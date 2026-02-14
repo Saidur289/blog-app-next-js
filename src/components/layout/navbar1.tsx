@@ -27,6 +27,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import Link from "next/link";
+import { ModeToggle } from "./ModeToggleButton";
 
 interface MenuItem {
   title: string;
@@ -115,6 +116,7 @@ const Navbar1 = ({
             </div>
           </div>
           <div className="flex gap-2">
+            <ModeToggle></ModeToggle>
             <Button asChild variant="outline" size="sm">
               <a href={auth.login.url}>{auth.login.title}</a>
             </Button>
@@ -186,11 +188,11 @@ const renderMenuItem = (item: MenuItem) => {
       <NavigationMenuItem key={item.title}>
         <NavigationMenuTrigger>{item.title}</NavigationMenuTrigger>
         <NavigationMenuContent className="bg-popover text-popover-foreground">
-          {item.items.map((subItem) => (
-            <NavigationMenuLink asChild key={subItem.title} className="w-80">
-              <SubMenuLink item={subItem} />
+    
+            <NavigationMenuLink asChild key={item.title} className="w-80">
+             <Link href={item.url}>{item.title}</Link>
             </NavigationMenuLink>
-          ))}
+       
         </NavigationMenuContent>
       </NavigationMenuItem>
     );
@@ -209,25 +211,11 @@ const renderMenuItem = (item: MenuItem) => {
 };
 
 const renderMobileMenuItem = (item: MenuItem) => {
-  if (item.items) {
-    return (
-      <AccordionItem key={item.title} value={item.title} className="border-b-0">
-        <AccordionTrigger className="text-md py-0 font-semibold hover:no-underline">
-          {item.title}
-        </AccordionTrigger>
-        <AccordionContent className="mt-2">
-          {item.items.map((subItem) => (
-            <SubMenuLink key={subItem.title} item={subItem} />
-          ))}
-        </AccordionContent>
-      </AccordionItem>
-    );
-  }
 
   return (
-    <a key={item.title} href={item.url} className="text-md font-semibold">
+    <Link key={item.title} href={item.url} className="text-md font-semibold">
       {item.title}
-    </a>
+    </Link>
   );
 };
 
