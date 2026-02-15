@@ -1,4 +1,4 @@
-import { AppSidebar } from '@/components/app-sidebar'
+import { AppSidebar } from '@/components/layout/app-sidebar'
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb'
 import { Separator } from '@/components/ui/separator'
 import { SidebarInset, SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar'
@@ -8,7 +8,6 @@ export const userInfo = {
     role: "user"
 }
 export default function DashboardLayout({
-  children,
   user,
   admin
 }: Readonly<{
@@ -40,7 +39,7 @@ export default function DashboardLayout({
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4">
           {userInfo.role === "admin"? admin : user}
-          <div className="bg-muted/50 min-h-[100vh] flex-1 rounded-xl md:min-h-min" />
+          <div className="bg-muted/50 min-h-screen flex-1 rounded-xl md:min-h-min" />
         </div>
       </SidebarInset>
     </SidebarProvider>

@@ -1,7 +1,6 @@
 import * as React from "react"
 
 import { SearchForm } from "@/components/search-form"
-import { VersionSwitcher } from "@/components/version-switcher"
 import {
   Sidebar,
   SidebarContent,
@@ -17,6 +16,7 @@ import {
 import { Route } from "@/app/types"
 import { adminRoutes } from "@/app/routes/adminRoutes"
 import { userRoutes } from "@/app/routes/userRoutes"
+import Link from "next/link"
 
 
 // This is sample data.
@@ -49,8 +49,8 @@ export function AppSidebar({user, ...props }:{user: {role: string} & React.Compo
               <SidebarMenu>
                 {item.items.map((item) => (
                   <SidebarMenuItem key={item.title}>
-                    <SidebarMenuButton asChild isActive={item.isActive}>
-                      <a href={item.url}>{item.title}</a>
+                    <SidebarMenuButton asChild>
+                      <Link href={item.url}>{item.title}</Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 ))}
