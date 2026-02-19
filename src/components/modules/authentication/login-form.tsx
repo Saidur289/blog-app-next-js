@@ -26,6 +26,7 @@ export function LoginForm({
     provider: "google",
     callbackURL: "http://localhost:3000"
   });
+  console.log(data, "hellop");
   }
 
 
