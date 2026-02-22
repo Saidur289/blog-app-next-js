@@ -1,6 +1,7 @@
 import { env } from "@/env"
 
 const API_URL= env.API_URL
+
 interface ServiceOptions{
     cache?: RequestCache;
     revalidate?: number;
@@ -42,8 +43,18 @@ export const blogService = {
       //   }
 
       return { data: data, error: null };
-    } catch (err) {
+    } catch (error) {
       return { data: null, error: { message: "Something Went Wrong" } };
     }
+    },
+    getPostById: async function(id: string){
+      try {
+        const res = await fetch(`${API_URL}/posts/${id}`)
+      const data = await res.json()
+      return {data: data, error: null}
+      } catch (error) {
+       console.error(error) ;
+       return {data: null,error: {msg: "wrong in get post by id function"}}
+      }
     }
 }

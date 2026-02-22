@@ -1,6 +1,7 @@
 import { blogService } from "@/services/blog.service";
 import { BlogPost } from "../types";
-import BlogCard from "@/components/modules/authentication/BlogPage";
+import BlogCard from "@/components/modules/homepage/BlogPage";
+
 
 
 export default async function Home() {
@@ -11,9 +12,10 @@ export default async function Home() {
     
   },
   {
-   revalidate: 10
+   cache: "no-store"
   }
 )
+
   // console.log(data.data.data, "data of blog");
   return (
     <div className="grid grid-cols-3 max-w-7xl mx-auto px-4 gap-6">
