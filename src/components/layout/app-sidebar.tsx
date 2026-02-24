@@ -13,10 +13,11 @@ import {
   SidebarMenuItem,
   SidebarRail,
 } from "@/components/ui/sidebar"
-import { Route } from "@/app/types"
-import { adminRoutes } from "@/app/routes/adminRoutes"
-import { userRoutes } from "@/app/routes/userRoutes"
+import { Route } from "@/types"
+import { adminRoutes } from "@/routes/adminRoutes"
+import { userRoutes } from "@/routes/userRoutes"
 import Link from "next/link"
+import { ROLES } from "@/constant/roles"
 
 
 // This is sample data.
@@ -25,10 +26,10 @@ import Link from "next/link"
 export function AppSidebar({user, ...props }:{user: {role: string} & React.ComponentProps<typeof Sidebar>} ) {
   let routes : Route[] = []
   switch(user.role){
-    case "admin":
+    case ROLES.admin:
       routes = adminRoutes;
       break;
-      case "user":
+      case ROLES.user:
         routes = userRoutes;
         break;
         default:

@@ -1,4 +1,4 @@
-import { BlogPost } from "@/app/types";
+import { BlogPost } from "@/types";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { blogService } from "@/services/blog.service";

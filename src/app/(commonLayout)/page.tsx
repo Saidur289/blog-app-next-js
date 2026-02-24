@@ -1,5 +1,5 @@
 import { blogService } from "@/services/blog.service";
-import { BlogPost } from "../types";
+import { BlogPost } from "../../types";
 import BlogCard from "@/components/modules/homepage/BlogPage";
 
 

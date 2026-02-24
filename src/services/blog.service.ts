@@ -1,4 +1,6 @@
 import { env } from "@/env"
+import { BlogData } from "@/types";
+import { cookies } from "next/headers";
 
 const API_URL= env.API_URL
 
@@ -33,7 +35,7 @@ export const blogService = {
         config.next = { revalidate: options.revalidate };
       }
 
-      const res = await fetch(url.toString(), config);
+      const res = await fetch(url.toString(), {...config, next: {tags: ['blogPosts']}});
 
       const data = await res.json();
 
@@ -56,5 +58,28 @@ export const blogService = {
        console.error(error) ;
        return {data: null,error: {msg: "wrong in get post by id function"}}
       }
+    },
+    createPost: async function (blogdata:BlogData) {
+     try {
+       const cookieStore = await cookies()
+       const res = await fetch(`${API_URL}/posts`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Cookie: cookieStore.toString()
+      },
+      body: JSON.stringify(blogdata)
+    })
+    const data = await res.json()
+    if(data.error){
+     return {
+      data: null, error: {message: "Post not created"}
+     }
+     
+    }
+    return {data: data, error: null}
+     } catch (error) {
+      return {data:null, error: {message: "Post not created"}}
+     }
     }
 }

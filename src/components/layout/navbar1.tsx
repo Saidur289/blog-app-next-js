@@ -80,6 +80,10 @@ const Navbar1 = ({
       title: "Blog",
       url: "/blogs",
     },
+    {
+      title: "Dashboard",
+      url: "/dashboard"
+    }
  
   ],
   auth = {

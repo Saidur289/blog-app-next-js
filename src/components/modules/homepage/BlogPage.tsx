@@ -10,7 +10,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { BlogPost } from "@/app/types";
+import { BlogPost } from "@/types";
 
 export default function BlogCard({ post }: { post: BlogPost }) {
   return (
