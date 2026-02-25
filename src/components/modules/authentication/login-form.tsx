@@ -44,6 +44,7 @@ export function LoginForm({ ...props }: React.ComponentProps<typeof Card>) {
         toast.error(error.message, {id: toastId})
         return;
       }
+      form.reset()
       toast.success("User created successfully")
      } catch (error) {
       toast.error("something happen wrong ", {id: toastId})

@@ -4,10 +4,11 @@ import { Separator } from '@/components/ui/separator'
 import { SidebarInset, SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar'
 import { ROLES } from '@/constant/roles'
 import { userService } from '@/services/user.service'
+import { redirect } from 'next/navigation'
 
 
 
-
+export const dynamic = "force-dynamic";
 export default async function DashboardLayout({
   user,
   admin
@@ -17,7 +18,9 @@ export default async function DashboardLayout({
   admin: React.ReactNode
 }>) {
   const {data} = await userService.getSession()
-
+if (!data || !data.user) {
+  return redirect("/login");
+}
  const userInfo = data.user
     
 

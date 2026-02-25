@@ -1,5 +1,6 @@
 import { env } from "@/env"
 import { BlogData } from "@/types";
+import { revalidateTag } from "next/cache";
 import { cookies } from "next/headers";
 
 const API_URL= env.API_URL
@@ -71,6 +72,7 @@ export const blogService = {
       body: JSON.stringify(blogdata)
     })
     const data = await res.json()
+    revalidateTag("blogPosts", "max")
     if(data.error){
      return {
       data: null, error: {message: "Post not created"}

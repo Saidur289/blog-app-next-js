@@ -11,7 +11,8 @@ export interface BlogPost{
     isFeatured: boolean
 }
 export interface BlogData{
+    id?:string;
     title: string;
     content: string;
-    tags: string[]
+    tags?: string[]
 }
